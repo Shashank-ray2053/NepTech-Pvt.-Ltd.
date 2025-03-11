@@ -1,4 +1,3 @@
-
 import { useEffect, useRef, useState } from 'react';
 import { Headset, Cloud, Server, Database, BarChart, X } from 'lucide-react';
 import { cn } from '@/lib/utils';
@@ -29,7 +28,7 @@ const services = [
     title: 'Remote IT Support',
     description: 'Get immediate assistance for all your IT issues with our 24/7 remote support team.',
     icon: <Headset className="service-icon" />,
-    detailedDescription: 'Our Remote IT Support service provides round-the-clock expert assistance for all your technology needs. Whether you're facing critical system failures or need help with everyday tech issues, our team of certified IT professionals is just a call away.',
+    detailedDescription: "Our Remote IT Support service provides round-the-clock expert assistance for all your technology needs. Whether you're facing critical system failures or need help with everyday tech issues, our team of certified IT professionals is just a call away.",
     features: [
       '24/7 helpdesk accessibility',
       'Rapid response times (average 15 minutes)',
@@ -85,7 +84,7 @@ const services = [
     title: 'IT Consultancy',
     description: 'Strategic guidance to align your IT investments with your business objectives for maximum ROI.',
     icon: <BarChart className="service-icon" />,
-    detailedDescription: 'NepTech's IT Consultancy services provide expert strategic guidance to help businesses make informed technology decisions. We analyze your current IT infrastructure, identify areas for improvement, and create roadmaps for technology implementation that aligns with your business goals.',
+    detailedDescription: "NepTech's IT Consultancy services provide expert strategic guidance to help businesses make informed technology decisions. We analyze your current IT infrastructure, identify areas for improvement, and create roadmaps for technology implementation that aligns with your business goals.",
     features: [
       'Comprehensive IT assessments',
       'Strategic technology roadmapping',
