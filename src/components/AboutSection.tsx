@@ -8,6 +8,7 @@ const AboutSection = () => {
   const textRef = useRef<HTMLDivElement>(null);
   const imageRef = useRef<HTMLDivElement>(null);
   const orbitsRef = useRef<HTMLDivElement>(null);
+  const missionRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -19,6 +20,9 @@ const AboutSection = () => {
             }
             if (entry.target === imageRef.current) {
               entry.target.classList.add('animate-fade-in-left');
+            }
+            if (entry.target === missionRef.current) {
+              entry.target.classList.add('animate-fade-in');
             }
             observer.unobserve(entry.target);
           }
@@ -32,6 +36,9 @@ const AboutSection = () => {
     }
     if (imageRef.current) {
       observer.observe(imageRef.current);
+    }
+    if (missionRef.current) {
+      observer.observe(missionRef.current);
     }
 
     // Animate orbital circles
@@ -53,6 +60,7 @@ const AboutSection = () => {
     return () => {
       if (textRef.current) observer.unobserve(textRef.current);
       if (imageRef.current) observer.unobserve(imageRef.current);
+      if (missionRef.current) observer.unobserve(missionRef.current);
       window.removeEventListener('mousemove', handleMouseMove);
     };
   }, []);
@@ -194,18 +202,18 @@ const AboutSection = () => {
               </div>
             </div>
             
-            <div className="blur-bg absolute -left-5 -top-5 p-4 rounded-lg shadow-lg transform transition-all duration-500 hover:scale-110 hover:shadow-xl" style={{transform: 'translateZ(20px)'}}>
-              <p className="text-neptech-blue font-medium">Our Mission</p>
-              <p className="text-sm text-neptech-dark/70">
-                To empower businesses through innovative IT solutions
+            {/* Mission separate instead of on the image */}
+            <div 
+              ref={missionRef}
+              className="opacity-0 mt-8 p-6 rounded-xl bg-gradient-to-r from-blue-50 to-purple-50 shadow-lg transform transition-all duration-500 hover:shadow-xl hover:scale-105"
+            >
+              <h3 className="text-xl font-bold text-neptech-dark mb-3 flex items-center">
+                <Award className="text-neptech-blue mr-2" size={20} />
+                Our Mission
+              </h3>
+              <p className="text-neptech-dark/70">
+                To empower businesses through innovative IT solutions that accelerate growth, enhance productivity, and create sustainable competitive advantages in today's rapidly evolving digital landscape.
               </p>
-            </div>
-            
-            <div className="blur-bg absolute -right-5 top-1/3 p-4 rounded-lg shadow-lg transform transition-all duration-500 hover:scale-110 hover:shadow-xl" style={{transform: 'translateZ(30px)'}}>
-              <div className="flex items-center space-x-1">
-                <div className="w-2 h-2 rounded-full bg-neptech-green"></div>
-                <p className="text-sm font-medium text-neptech-dark">Always Online</p>
-              </div>
             </div>
           </div>
         </div>

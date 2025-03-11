@@ -57,7 +57,7 @@ const Index = () => {
 
     return () => {
       document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.removeEventListener('click', function(e) {});
+        anchor.removeEventListener('click', function() {});
       });
       
       cards.forEach(card => {

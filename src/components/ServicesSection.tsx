@@ -1,3 +1,4 @@
+
 import { useEffect, useRef, useState } from 'react';
 import { Headset, Cloud, Server, Database, BarChart, X } from 'lucide-react';
 import { cn } from '@/lib/utils';
@@ -10,6 +11,7 @@ interface ServiceCardProps {
   detailedDescription: string;
   features: string[];
   onLearnMore: () => void;
+  colorClass: string;
 }
 
 interface ServiceDetailProps {
@@ -19,6 +21,7 @@ interface ServiceDetailProps {
     icon: React.ReactNode;
     detailedDescription: string;
     features: string[];
+    colorClass: string;
   } | null;
   onClose: () => void;
 }
@@ -36,13 +39,14 @@ const services = [
       'Multiple support channels (phone, email, chat)',
       'Regular system health checks',
       'Detailed resolution reports'
-    ]
+    ],
+    colorClass: 'from-blue-500 to-blue-600'
   },
   {
     title: 'Cloud Services',
     description: 'Securely store, access, and manage your data and applications in our optimized cloud environment.',
     icon: <Cloud className="service-icon" />,
-    detailedDescription: 'NepTech Cloud Services offers enterprise-grade cloud solutions that are scalable, secure, and cost-effective. We help businesses migrate to the cloud, optimize their cloud infrastructure, and manage their cloud resources efficiently.',
+    detailedDescription: "NepTech Cloud Services offers enterprise-grade cloud solutions that are scalable, secure, and cost-effective. We help businesses migrate to the cloud, optimize their cloud infrastructure, and manage their cloud resources efficiently.",
     features: [
       'Public, private, and hybrid cloud options',
       'Seamless migration from legacy systems',
@@ -50,13 +54,14 @@ const services = [
       'Built-in redundancy and disaster recovery',
       'Pay-as-you-go pricing model',
       'Comprehensive security protocols'
-    ]
+    ],
+    colorClass: 'from-purple-500 to-indigo-600'
   },
   {
     title: 'IT Infrastructure',
     description: 'Build a robust IT foundation with our custom infrastructure solutions designed for your business.',
     icon: <Server className="service-icon" />,
-    detailedDescription: 'Our IT Infrastructure services help businesses establish a robust technical foundation that supports growth and innovation. We design, implement, and maintain the hardware, software, networks, and services required for your business operations.',
+    detailedDescription: "Our IT Infrastructure services help businesses establish a robust technical foundation that supports growth and innovation. We design, implement, and maintain the hardware, software, networks, and services required for your business operations.",
     features: [
       'Custom network design and implementation',
       'Server configuration and management',
@@ -64,13 +69,14 @@ const services = [
       'Enterprise hardware procurement',
       'Infrastructure security hardening',
       'Regular maintenance and updates'
-    ]
+    ],
+    colorClass: 'from-green-500 to-teal-600'
   },
   {
     title: 'Data Backup & Recovery',
     description: 'Protect your business with automated backup systems and rapid recovery solutions.',
     icon: <Database className="service-icon" />,
-    detailedDescription: 'Our Data Backup & Recovery solutions ensure your critical business information is protected against data loss. We implement automated, secure backup systems with multiple redundancies and provide rapid recovery options to minimize downtime.',
+    detailedDescription: "Our Data Backup & Recovery solutions ensure your critical business information is protected against data loss. We implement automated, secure backup systems with multiple redundancies and provide rapid recovery options to minimize downtime.",
     features: [
       'Automated multi-site backups',
       'Real-time data replication',
@@ -78,7 +84,8 @@ const services = [
       'End-to-end encryption',
       'Regular backup verification',
       'Rapid recovery procedures'
-    ]
+    ],
+    colorClass: 'from-orange-500 to-amber-600'
   },
   {
     title: 'IT Consultancy',
@@ -92,7 +99,8 @@ const services = [
       'Vendor selection assistance',
       'Cost optimization strategies',
       'Technology trend analysis'
-    ]
+    ],
+    colorClass: 'from-pink-500 to-rose-600'
   },
 ];
 
@@ -134,7 +142,7 @@ const ServiceDetail: React.FC<ServiceDetailProps> = ({ service, onClose }) => {
           </button>
           
           <div className="flex items-center gap-4 mb-6">
-            <div className="flex-shrink-0 w-16 h-16 rounded-full bg-neptech-lightBlue flex items-center justify-center">
+            <div className={`flex-shrink-0 w-16 h-16 rounded-full bg-gradient-to-br ${service.colorClass} flex items-center justify-center text-white`}>
               {service.icon}
             </div>
             <h3 className="text-2xl font-bold text-neptech-dark">{service.title}</h3>
@@ -146,8 +154,8 @@ const ServiceDetail: React.FC<ServiceDetailProps> = ({ service, onClose }) => {
           <ul className="space-y-3 mb-8">
             {service.features.map((feature, index) => (
               <li key={index} className="flex items-start gap-3">
-                <div className="w-5 h-5 rounded-full bg-neptech-blue/10 flex-shrink-0 flex items-center justify-center mt-0.5">
-                  <div className="w-2 h-2 rounded-full bg-neptech-blue"></div>
+                <div className={`w-5 h-5 rounded-full bg-gradient-to-br ${service.colorClass} flex-shrink-0 flex items-center justify-center mt-0.5 text-white`}>
+                  <div className="w-2 h-2 rounded-full bg-white"></div>
                 </div>
                 <span className="text-neptech-dark/80">{feature}</span>
               </li>
@@ -157,7 +165,7 @@ const ServiceDetail: React.FC<ServiceDetailProps> = ({ service, onClose }) => {
           <a 
             href="#contact" 
             onClick={onClose}
-            className="button-primary w-full text-center"
+            className={`rounded-full text-white px-8 py-3 font-medium transition-all duration-300 ease-elastic shadow-lg hover:shadow-xl hover:translate-y-[-2px] w-full text-center bg-gradient-to-r ${service.colorClass}`}
           >
             Request a Consultation
           </a>
@@ -167,8 +175,18 @@ const ServiceDetail: React.FC<ServiceDetailProps> = ({ service, onClose }) => {
   );
 };
 
-const ServiceCard: React.FC<ServiceCardProps> = ({ title, description, icon, delay, detailedDescription, features, onLearnMore }) => {
+const ServiceCard: React.FC<ServiceCardProps> = ({ 
+  title, 
+  description, 
+  icon, 
+  delay, 
+  detailedDescription, 
+  features, 
+  onLearnMore,
+  colorClass
+}) => {
   const cardRef = useRef<HTMLDivElement>(null);
+  const [isHovered, setIsHovered] = useState(false);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -243,23 +261,35 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ title, description, icon, del
     <div 
       ref={cardRef}
       className={cn(
-        "service-card card-3d p-8 opacity-0",
+        "service-card card-3d p-8 opacity-0 relative overflow-hidden",
         "hover:shadow-lg transition-all duration-500 ease-elastic",
-        "bg-gradient-to-br from-white to-neptech-gray/20"
+        "bg-white"
       )}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
     >
-      <div className="card-3d-content">
-        <div className="service-icon-container">
+      {/* Gradient background that appears on hover */}
+      <div 
+        className={`absolute inset-0 transition-opacity duration-500 ${isHovered ? 'opacity-10' : 'opacity-0'} bg-gradient-to-br ${colorClass}`}
+      ></div>
+      
+      <div className="card-3d-content relative z-10">
+        <div className={`service-icon-container mb-6 bg-gradient-to-br ${colorClass} text-white`}>
           {icon}
         </div>
+        
         <h3 className="text-xl font-semibold mb-4 text-neptech-dark">{title}</h3>
         <p className="text-neptech-dark/70">{description}</p>
+        
         <button 
           onClick={onLearnMore}
-          className="inline-block mt-6 text-neptech-blue font-medium hover:text-neptech-dark transition-colors duration-300 group flex items-center"
+          className={`inline-block mt-6 font-medium transition-colors duration-300 group flex items-center relative overflow-hidden`}
         >
-          Learn more
-          <span className="inline-block ml-1 transition-transform duration-300 group-hover:translate-x-1">→</span>
+          <span className={`relative z-10 bg-clip-text text-transparent bg-gradient-to-r ${colorClass}`}>Learn more</span>
+          <span className={`inline-block ml-1 transition-transform duration-300 group-hover:translate-x-1 bg-clip-text text-transparent bg-gradient-to-r ${colorClass}`}>→</span>
+          
+          {/* Animated underline effect */}
+          <span className={`absolute bottom-0 left-0 w-full h-0.5 bg-gradient-to-r ${colorClass} transform scale-x-0 origin-left transition-transform duration-300 group-hover:scale-x-100`}></span>
         </button>
       </div>
       <div className="card-shine"></div>
@@ -312,11 +342,13 @@ const ServicesSection = () => {
       ref={sectionRef}
       className="section-padding bg-neptech-gray relative overflow-hidden"
     >
-      {/* Background elements */}
+      {/* Background elements with more vibrant colors */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-0 left-0 w-1/3 h-1/3 bg-gradient-to-br from-neptech-blue/5 to-transparent blur-[80px]"></div>
-        <div className="absolute bottom-0 right-0 w-1/3 h-1/3 bg-gradient-to-tl from-neptech-green/5 to-transparent blur-[80px]"></div>
-        <div className="absolute top-1/2 right-1/4 w-1/4 h-1/4 bg-gradient-to-bl from-neptech-purple/5 to-transparent blur-[80px]"></div>
+        <div className="absolute top-0 left-0 w-1/3 h-1/3 bg-gradient-to-br from-blue-400/10 to-transparent blur-[80px]"></div>
+        <div className="absolute bottom-0 right-0 w-1/3 h-1/3 bg-gradient-to-tl from-green-400/10 to-transparent blur-[80px]"></div>
+        <div className="absolute top-1/2 right-1/4 w-1/4 h-1/4 bg-gradient-to-bl from-purple-400/10 to-transparent blur-[80px]"></div>
+        <div className="absolute bottom-1/3 left-1/3 w-1/4 h-1/4 bg-gradient-to-tr from-pink-400/10 to-transparent blur-[80px]"></div>
+        <div className="absolute top-1/4 left-1/2 w-1/5 h-1/5 bg-gradient-to-r from-orange-400/10 to-transparent blur-[70px]"></div>
       </div>
 
       <div className="container mx-auto px-6">
@@ -342,6 +374,7 @@ const ServicesSection = () => {
               delay={index * 150}
               detailedDescription={service.detailedDescription}
               features={service.features}
+              colorClass={service.colorClass}
               onLearnMore={() => handleLearnMore(service)}
             />
           ))}

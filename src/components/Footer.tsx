@@ -32,7 +32,7 @@ const Footer = () => {
       ref={footerRef} 
       className="relative text-white pt-20 pb-8 overflow-hidden"
       style={{
-        background: "linear-gradient(135deg, #1e3c72 0%, #2a5298 100%)"
+        background: "linear-gradient(135deg, #1e3c72 0%, #2a5298 50%, #7303c0 100%)"
       }}
     >
       {/* Dynamic animated background */}
@@ -41,21 +41,29 @@ const Footer = () => {
       </div>
       
       {/* Background glow effect */}
-      <div className="absolute top-0 left-1/4 w-1/2 h-1/2 bg-blue-500 opacity-10 blur-[100px] rounded-full animate-pulse" style={{animationDuration: '8s'}}></div>
-      <div className="absolute bottom-0 right-1/4 w-1/3 h-1/3 bg-purple-500 opacity-10 blur-[80px] rounded-full animate-pulse" style={{animationDuration: '12s', animationDelay: '2s'}}></div>
-      <div className="absolute top-1/3 right-1/4 w-1/4 h-1/4 bg-green-500 opacity-10 blur-[70px] rounded-full animate-pulse" style={{animationDuration: '10s', animationDelay: '1s'}}></div>
+      <div className="absolute top-0 left-1/4 w-1/2 h-1/2 bg-blue-400 opacity-15 blur-[100px] rounded-full animate-pulse" style={{animationDuration: '8s'}}></div>
+      <div className="absolute bottom-0 right-1/4 w-1/3 h-1/3 bg-purple-400 opacity-15 blur-[80px] rounded-full animate-pulse" style={{animationDuration: '12s', animationDelay: '2s'}}></div>
+      <div className="absolute top-1/3 right-1/4 w-1/4 h-1/4 bg-pink-400 opacity-15 blur-[70px] rounded-full animate-pulse" style={{animationDuration: '10s', animationDelay: '1s'}}></div>
+      <div className="absolute bottom-1/4 left-1/3 w-1/4 h-1/4 bg-green-400 opacity-15 blur-[70px] rounded-full animate-pulse" style={{animationDuration: '9s', animationDelay: '0.5s'}}></div>
       
       <div className="container mx-auto px-6 relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-16">
-          <div className="card-3d p-6 rounded-xl bg-white/5 backdrop-blur-sm border border-white/10">
+          <div className="card-3d p-6 rounded-xl bg-white/5 backdrop-blur-sm border border-white/10 transform transition-all duration-500 hover:scale-105">
             <div className="card-3d-content">
               <div className="mb-6 flex items-center">
-                <img 
-                  src="/lovable-uploads/c4dad46c-99f2-4756-9567-b7f9ca14063d.png" 
-                  alt="NepTech Logo" 
-                  className="h-12 w-auto brightness-0 invert mr-3"
-                />
-                <h2 className="text-2xl font-bold text-white tracking-wide">NepTech</h2>
+                <div className="relative mr-3">
+                  <img 
+                    src="/lovable-uploads/c4dad46c-99f2-4756-9567-b7f9ca14063d.png" 
+                    alt="NepTech Logo" 
+                    className="h-12 w-auto brightness-0 invert"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 mix-blend-color-dodge opacity-50 rounded-full animate-pulse-subtle"></div>
+                </div>
+                <h2 className="text-2xl font-bold text-white tracking-wide">
+                  <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-400 via-purple-300 to-pink-400">
+                    NepTech
+                  </span>
+                </h2>
               </div>
               <div className="card-shine"></div>
               <p className="text-white/70 mb-6">
@@ -82,7 +90,7 @@ const Footer = () => {
             </div>
           </div>
           
-          <div className="card-3d p-6 rounded-xl bg-white/5 backdrop-blur-sm border border-white/10">
+          <div className="card-3d p-6 rounded-xl bg-white/5 backdrop-blur-sm border border-white/10 transform transition-all duration-500 hover:scale-105">
             <div className="card-3d-content">
               <h3 className="text-lg font-semibold mb-6 text-blue-300">Quick Links</h3>
               <div className="card-shine"></div>
@@ -121,7 +129,7 @@ const Footer = () => {
             </div>
           </div>
           
-          <div className="card-3d p-6 rounded-xl bg-white/5 backdrop-blur-sm border border-white/10">
+          <div className="card-3d p-6 rounded-xl bg-white/5 backdrop-blur-sm border border-white/10 transform transition-all duration-500 hover:scale-105">
             <div className="card-3d-content">
               <h3 className="text-lg font-semibold mb-6 text-green-300">Services</h3>
               <div className="card-shine"></div>
@@ -160,7 +168,7 @@ const Footer = () => {
             </div>
           </div>
           
-          <div className="card-3d p-6 rounded-xl bg-white/5 backdrop-blur-sm border border-white/10">
+          <div className="card-3d p-6 rounded-xl bg-white/5 backdrop-blur-sm border border-white/10 transform transition-all duration-500 hover:scale-105">
             <div className="card-3d-content">
               <h3 className="text-lg font-semibold mb-6 text-purple-300">Contact Info</h3>
               <div className="card-shine"></div>
