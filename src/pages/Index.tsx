@@ -1,12 +1,67 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+
+import { useEffect } from 'react';
+import Navbar from '@/components/Navbar';
+import HeroSection from '@/components/HeroSection';
+import ServicesSection from '@/components/ServicesSection';
+import AboutSection from '@/components/AboutSection';
+import TeamSection from '@/components/TeamSection';
+import ContactSection from '@/components/ContactSection';
+import Footer from '@/components/Footer';
 
 const Index = () => {
+  useEffect(() => {
+    // Smooth scroll for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        
+        const targetId = this.getAttribute('href');
+        if (!targetId) return;
+        
+        const targetElement = document.querySelector(targetId);
+        if (!targetElement) return;
+        
+        window.scrollTo({
+          top: targetElement.getBoundingClientRect().top + window.scrollY - 80,
+          behavior: 'smooth'
+        });
+      });
+    });
+
+    // 3D Card Hover Effect for all cards with card-3d class
+    const cards = document.querySelectorAll('.card-3d');
+    
+    cards.forEach(card => {
+      card.addEventListener('mousemove', (e) => {
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        
+        card.style.setProperty('--mouse-x', `${x}px`);
+        card.style.setProperty('--mouse-y', `${y}px`);
+      });
+    });
+
+    return () => {
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.removeEventListener('click', function(e) {});
+      });
+      
+      cards.forEach(card => {
+        card.removeEventListener('mousemove', () => {});
+      });
+    };
+  }, []);
+
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100">
-      <div className="text-center">
-        <h1 className="text-4xl font-bold mb-4">Welcome to Your Blank App</h1>
-        <p className="text-xl text-gray-600">Start building your amazing project here!</p>
-      </div>
+    <div className="min-h-screen bg-white overflow-hidden custom-scrollbar">
+      <Navbar />
+      <HeroSection />
+      <ServicesSection />
+      <AboutSection />
+      <TeamSection />
+      <ContactSection />
+      <Footer />
     </div>
   );
 };
