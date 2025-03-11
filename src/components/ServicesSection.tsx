@@ -1,4 +1,3 @@
-
 import { useEffect, useRef, useState } from 'react';
 import { Headset, Cloud, Server, Database, BarChart, X } from 'lucide-react';
 import { cn } from '@/lib/utils';
@@ -30,7 +29,7 @@ const services = [
   {
     title: 'Remote IT Support',
     description: 'Get immediate assistance for all your IT issues with our 24/7 remote support team.',
-    icon: <Headset className="service-icon" />,
+    icon: <Headset className="service-icon text-red-500" />,
     detailedDescription: "Our Remote IT Support service provides round-the-clock expert assistance for all your technology needs. Whether you're facing critical system failures or need help with everyday tech issues, our team of certified IT professionals is just a call away.",
     features: [
       '24/7 helpdesk accessibility',
@@ -40,7 +39,7 @@ const services = [
       'Regular system health checks',
       'Detailed resolution reports'
     ],
-    colorClass: 'from-blue-500 to-blue-600'
+    colorClass: 'from-red-500 to-red-600'
   },
   {
     title: 'Cloud Services',

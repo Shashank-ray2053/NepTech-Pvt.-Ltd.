@@ -27,6 +27,18 @@ const Footer = () => {
     };
   }, []);
 
+  // Fixed href scroll function for footer links
+  const scrollToSection = (id: string, e: React.MouseEvent) => {
+    e.preventDefault();
+    const element = document.getElementById(id);
+    if (element) {
+      window.scrollTo({
+        top: element.offsetTop - 80,
+        behavior: 'smooth'
+      });
+    }
+  };
+
   return (
     <footer 
       ref={footerRef} 
@@ -96,31 +108,31 @@ const Footer = () => {
               <div className="card-shine"></div>
               <ul className="space-y-4">
                 <li>
-                  <a href="#home" className="text-white/70 hover:text-blue-300 transition-colors duration-300 flex items-center">
+                  <a href="#home" onClick={(e) => scrollToSection('home', e)} className="text-white/70 hover:text-blue-300 transition-colors duration-300 flex items-center">
                     <span className="w-1.5 h-1.5 bg-blue-400 rounded-full mr-2"></span>
                     Home
                   </a>
                 </li>
                 <li>
-                  <a href="#about" className="text-white/70 hover:text-blue-300 transition-colors duration-300 flex items-center">
+                  <a href="#about" onClick={(e) => scrollToSection('about', e)} className="text-white/70 hover:text-blue-300 transition-colors duration-300 flex items-center">
                     <span className="w-1.5 h-1.5 bg-blue-400 rounded-full mr-2"></span>
                     About Us
                   </a>
                 </li>
                 <li>
-                  <a href="#services" className="text-white/70 hover:text-blue-300 transition-colors duration-300 flex items-center">
+                  <a href="#services" onClick={(e) => scrollToSection('services', e)} className="text-white/70 hover:text-blue-300 transition-colors duration-300 flex items-center">
                     <span className="w-1.5 h-1.5 bg-blue-400 rounded-full mr-2"></span>
                     Services
                   </a>
                 </li>
                 <li>
-                  <a href="#team" className="text-white/70 hover:text-blue-300 transition-colors duration-300 flex items-center">
+                  <a href="#team" onClick={(e) => scrollToSection('team', e)} className="text-white/70 hover:text-blue-300 transition-colors duration-300 flex items-center">
                     <span className="w-1.5 h-1.5 bg-blue-400 rounded-full mr-2"></span>
                     Our Team
                   </a>
                 </li>
                 <li>
-                  <a href="#contact" className="text-white/70 hover:text-blue-300 transition-colors duration-300 flex items-center">
+                  <a href="#contact" onClick={(e) => scrollToSection('contact', e)} className="text-white/70 hover:text-blue-300 transition-colors duration-300 flex items-center">
                     <span className="w-1.5 h-1.5 bg-blue-400 rounded-full mr-2"></span>
                     Contact
                   </a>
@@ -135,31 +147,31 @@ const Footer = () => {
               <div className="card-shine"></div>
               <ul className="space-y-4">
                 <li>
-                  <a href="#services" className="text-white/70 hover:text-green-300 transition-colors duration-300 flex items-center">
+                  <a href="#services" onClick={(e) => scrollToSection('services', e)} className="text-white/70 hover:text-green-300 transition-colors duration-300 flex items-center">
                     <span className="w-1.5 h-1.5 bg-green-400 rounded-full mr-2"></span>
                     Remote IT Support
                   </a>
                 </li>
                 <li>
-                  <a href="#services" className="text-white/70 hover:text-green-300 transition-colors duration-300 flex items-center">
+                  <a href="#services" onClick={(e) => scrollToSection('services', e)} className="text-white/70 hover:text-green-300 transition-colors duration-300 flex items-center">
                     <span className="w-1.5 h-1.5 bg-green-400 rounded-full mr-2"></span>
                     Cloud Services
                   </a>
                 </li>
                 <li>
-                  <a href="#services" className="text-white/70 hover:text-green-300 transition-colors duration-300 flex items-center">
+                  <a href="#services" onClick={(e) => scrollToSection('services', e)} className="text-white/70 hover:text-green-300 transition-colors duration-300 flex items-center">
                     <span className="w-1.5 h-1.5 bg-green-400 rounded-full mr-2"></span>
                     IT Infrastructure
                   </a>
                 </li>
                 <li>
-                  <a href="#services" className="text-white/70 hover:text-green-300 transition-colors duration-300 flex items-center">
+                  <a href="#services" onClick={(e) => scrollToSection('services', e)} className="text-white/70 hover:text-green-300 transition-colors duration-300 flex items-center">
                     <span className="w-1.5 h-1.5 bg-green-400 rounded-full mr-2"></span>
                     Data Backup & Recovery
                   </a>
                 </li>
                 <li>
-                  <a href="#services" className="text-white/70 hover:text-green-300 transition-colors duration-300 flex items-center">
+                  <a href="#services" onClick={(e) => scrollToSection('services', e)} className="text-white/70 hover:text-green-300 transition-colors duration-300 flex items-center">
                     <span className="w-1.5 h-1.5 bg-green-400 rounded-full mr-2"></span>
                     IT Consultancy
                   </a>

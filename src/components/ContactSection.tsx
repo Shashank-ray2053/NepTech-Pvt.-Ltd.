@@ -26,17 +26,25 @@ const ContactSection = () => {
     e.preventDefault();
     setIsSubmitting(true);
     
-    // Simulate form submission
+    // Create mailto link with form data
+    const mailtoLink = `mailto:info@neptech.com?subject=${encodeURIComponent(formData.subject)}&body=${encodeURIComponent(
+      `Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`
+    )}`;
+    
+    // Open email client
+    window.location.href = mailtoLink;
+    
+    // Show success message and reset form
     setTimeout(() => {
       setIsSubmitting(false);
-      toast.success('Message sent successfully! We will contact you soon.');
+      toast.success('Email client opened. Please send your message from your email application.');
       setFormData({
         name: '',
         email: '',
         subject: '',
         message: ''
       });
-    }, 1500);
+    }, 1000);
   };
 
   useEffect(() => {
@@ -212,8 +220,8 @@ const ContactSection = () => {
                   <div>
                     <h4 className="text-lg font-medium text-neptech-dark">Email Us</h4>
                     <p className="text-neptech-dark/70">
-                      info@neptech.com<br />
-                      support@neptech.com
+                      <a href="mailto:info@neptech.com" className="hover:text-neptech-blue transition-colors">info@neptech.com</a><br />
+                      <a href="mailto:support@neptech.com" className="hover:text-neptech-blue transition-colors">support@neptech.com</a>
                     </p>
                   </div>
                 </div>
@@ -225,8 +233,8 @@ const ContactSection = () => {
                   <div>
                     <h4 className="text-lg font-medium text-neptech-dark">Call Us</h4>
                     <p className="text-neptech-dark/70">
-                      +1 (555) 123-4567<br />
-                      +1 (555) 987-6543
+                      <a href="tel:+15551234567" className="hover:text-neptech-blue transition-colors">+1 (555) 123-4567</a><br />
+                      <a href="tel:+15559876543" className="hover:text-neptech-blue transition-colors">+1 (555) 987-6543</a>
                     </p>
                   </div>
                 </div>
