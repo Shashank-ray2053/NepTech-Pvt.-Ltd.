@@ -30,11 +30,20 @@ const Footer = () => {
   return (
     <footer 
       ref={footerRef} 
-      className="relative bg-gradient-to-br from-neptech-dark via-purple-900 to-blue-900 text-white pt-20 pb-8 overflow-hidden"
+      className="relative text-white pt-20 pb-8 overflow-hidden"
+      style={{
+        background: "linear-gradient(135deg, #1e3c72 0%, #2a5298 100%)"
+      }}
     >
+      {/* Dynamic animated background */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute top-0 left-0 w-full h-full bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxkZWZzPjxwYXR0ZXJuIGlkPSJwYXR0ZXJuIiB4PSIwIiB5PSIwIiB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHBhdHRlcm5Vbml0cz0idXNlclNwYWNlT25Vc2UiIHBhdHRlcm5UcmFuc2Zvcm09InJvdGF0ZSgzMCkiPjxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSIyIiBoZWlnaHQ9IjIiIGZpbGw9IiNmZmZmZmYxMCIvPjwvcGF0dGVybj48L2RlZnM+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0idXJsKCNwYXR0ZXJuKSIvPjwvc3ZnPg==')] opacity-20"></div>
+      </div>
+      
       {/* Background glow effect */}
-      <div className="absolute top-0 left-1/4 w-1/2 h-1/2 bg-neptech-blue opacity-20 blur-[100px] rounded-full"></div>
-      <div className="absolute bottom-0 right-1/4 w-1/3 h-1/3 bg-purple-500 opacity-20 blur-[80px] rounded-full"></div>
+      <div className="absolute top-0 left-1/4 w-1/2 h-1/2 bg-blue-500 opacity-10 blur-[100px] rounded-full animate-pulse" style={{animationDuration: '8s'}}></div>
+      <div className="absolute bottom-0 right-1/4 w-1/3 h-1/3 bg-purple-500 opacity-10 blur-[80px] rounded-full animate-pulse" style={{animationDuration: '12s', animationDelay: '2s'}}></div>
+      <div className="absolute top-1/3 right-1/4 w-1/4 h-1/4 bg-green-500 opacity-10 blur-[70px] rounded-full animate-pulse" style={{animationDuration: '10s', animationDelay: '1s'}}></div>
       
       <div className="container mx-auto px-6 relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-16">
@@ -75,36 +84,36 @@ const Footer = () => {
           
           <div className="card-3d p-6 rounded-xl bg-white/5 backdrop-blur-sm border border-white/10">
             <div className="card-3d-content">
-              <h3 className="text-lg font-semibold mb-6 text-neptech-blue">Quick Links</h3>
+              <h3 className="text-lg font-semibold mb-6 text-blue-300">Quick Links</h3>
               <div className="card-shine"></div>
               <ul className="space-y-4">
                 <li>
-                  <a href="#home" className="text-white/70 hover:text-neptech-green transition-colors duration-300 flex items-center">
-                    <span className="w-1.5 h-1.5 bg-neptech-blue rounded-full mr-2"></span>
+                  <a href="#home" className="text-white/70 hover:text-blue-300 transition-colors duration-300 flex items-center">
+                    <span className="w-1.5 h-1.5 bg-blue-400 rounded-full mr-2"></span>
                     Home
                   </a>
                 </li>
                 <li>
-                  <a href="#about" className="text-white/70 hover:text-neptech-green transition-colors duration-300 flex items-center">
-                    <span className="w-1.5 h-1.5 bg-neptech-blue rounded-full mr-2"></span>
+                  <a href="#about" className="text-white/70 hover:text-blue-300 transition-colors duration-300 flex items-center">
+                    <span className="w-1.5 h-1.5 bg-blue-400 rounded-full mr-2"></span>
                     About Us
                   </a>
                 </li>
                 <li>
-                  <a href="#services" className="text-white/70 hover:text-neptech-green transition-colors duration-300 flex items-center">
-                    <span className="w-1.5 h-1.5 bg-neptech-blue rounded-full mr-2"></span>
+                  <a href="#services" className="text-white/70 hover:text-blue-300 transition-colors duration-300 flex items-center">
+                    <span className="w-1.5 h-1.5 bg-blue-400 rounded-full mr-2"></span>
                     Services
                   </a>
                 </li>
                 <li>
-                  <a href="#team" className="text-white/70 hover:text-neptech-green transition-colors duration-300 flex items-center">
-                    <span className="w-1.5 h-1.5 bg-neptech-blue rounded-full mr-2"></span>
+                  <a href="#team" className="text-white/70 hover:text-blue-300 transition-colors duration-300 flex items-center">
+                    <span className="w-1.5 h-1.5 bg-blue-400 rounded-full mr-2"></span>
                     Our Team
                   </a>
                 </li>
                 <li>
-                  <a href="#contact" className="text-white/70 hover:text-neptech-green transition-colors duration-300 flex items-center">
-                    <span className="w-1.5 h-1.5 bg-neptech-blue rounded-full mr-2"></span>
+                  <a href="#contact" className="text-white/70 hover:text-blue-300 transition-colors duration-300 flex items-center">
+                    <span className="w-1.5 h-1.5 bg-blue-400 rounded-full mr-2"></span>
                     Contact
                   </a>
                 </li>
@@ -114,36 +123,36 @@ const Footer = () => {
           
           <div className="card-3d p-6 rounded-xl bg-white/5 backdrop-blur-sm border border-white/10">
             <div className="card-3d-content">
-              <h3 className="text-lg font-semibold mb-6 text-neptech-green">Services</h3>
+              <h3 className="text-lg font-semibold mb-6 text-green-300">Services</h3>
               <div className="card-shine"></div>
               <ul className="space-y-4">
                 <li>
-                  <a href="#services" className="text-white/70 hover:text-neptech-blue transition-colors duration-300 flex items-center">
-                    <span className="w-1.5 h-1.5 bg-neptech-green rounded-full mr-2"></span>
+                  <a href="#services" className="text-white/70 hover:text-green-300 transition-colors duration-300 flex items-center">
+                    <span className="w-1.5 h-1.5 bg-green-400 rounded-full mr-2"></span>
                     Remote IT Support
                   </a>
                 </li>
                 <li>
-                  <a href="#services" className="text-white/70 hover:text-neptech-blue transition-colors duration-300 flex items-center">
-                    <span className="w-1.5 h-1.5 bg-neptech-green rounded-full mr-2"></span>
+                  <a href="#services" className="text-white/70 hover:text-green-300 transition-colors duration-300 flex items-center">
+                    <span className="w-1.5 h-1.5 bg-green-400 rounded-full mr-2"></span>
                     Cloud Services
                   </a>
                 </li>
                 <li>
-                  <a href="#services" className="text-white/70 hover:text-neptech-blue transition-colors duration-300 flex items-center">
-                    <span className="w-1.5 h-1.5 bg-neptech-green rounded-full mr-2"></span>
+                  <a href="#services" className="text-white/70 hover:text-green-300 transition-colors duration-300 flex items-center">
+                    <span className="w-1.5 h-1.5 bg-green-400 rounded-full mr-2"></span>
                     IT Infrastructure
                   </a>
                 </li>
                 <li>
-                  <a href="#services" className="text-white/70 hover:text-neptech-blue transition-colors duration-300 flex items-center">
-                    <span className="w-1.5 h-1.5 bg-neptech-green rounded-full mr-2"></span>
+                  <a href="#services" className="text-white/70 hover:text-green-300 transition-colors duration-300 flex items-center">
+                    <span className="w-1.5 h-1.5 bg-green-400 rounded-full mr-2"></span>
                     Data Backup & Recovery
                   </a>
                 </li>
                 <li>
-                  <a href="#services" className="text-white/70 hover:text-neptech-blue transition-colors duration-300 flex items-center">
-                    <span className="w-1.5 h-1.5 bg-neptech-green rounded-full mr-2"></span>
+                  <a href="#services" className="text-white/70 hover:text-green-300 transition-colors duration-300 flex items-center">
+                    <span className="w-1.5 h-1.5 bg-green-400 rounded-full mr-2"></span>
                     IT Consultancy
                   </a>
                 </li>
@@ -153,22 +162,22 @@ const Footer = () => {
           
           <div className="card-3d p-6 rounded-xl bg-white/5 backdrop-blur-sm border border-white/10">
             <div className="card-3d-content">
-              <h3 className="text-lg font-semibold mb-6 text-purple-400">Contact Info</h3>
+              <h3 className="text-lg font-semibold mb-6 text-purple-300">Contact Info</h3>
               <div className="card-shine"></div>
               <ul className="space-y-4">
                 <li className="flex items-start">
-                  <MapPin className="mr-3 text-neptech-green flex-shrink-0" size={18} />
+                  <MapPin className="mr-3 text-purple-400 flex-shrink-0" size={18} />
                   <span className="text-white/70">
                     123 Tech Street, Silicon Valley<br />
                     California, 94025
                   </span>
                 </li>
                 <li className="flex items-center">
-                  <Phone className="mr-3 text-neptech-green flex-shrink-0" size={18} />
+                  <Phone className="mr-3 text-purple-400 flex-shrink-0" size={18} />
                   <span className="text-white/70">+1 (555) 123-4567</span>
                 </li>
                 <li className="flex items-center">
-                  <Mail className="mr-3 text-neptech-green flex-shrink-0" size={18} />
+                  <Mail className="mr-3 text-purple-400 flex-shrink-0" size={18} />
                   <span className="text-white/70">info@neptech.com</span>
                 </li>
               </ul>
@@ -178,10 +187,10 @@ const Footer = () => {
         
         <div className="pt-8 border-t border-white/10 text-center relative">
           <div className="absolute left-0 right-0 -top-4 flex justify-center">
-            <div className="h-0.5 w-24 bg-gradient-to-r from-transparent via-neptech-blue to-transparent"></div>
+            <div className="h-0.5 w-24 bg-gradient-to-r from-transparent via-blue-400 to-transparent"></div>
           </div>
           <p className="text-white/50 text-sm">
-            © {new Date().getFullYear()} <span className="text-neptech-blue font-medium">NepTech</span>. All rights reserved. Designed with ❤️
+            © {new Date().getFullYear()} <span className="text-blue-300 font-medium">NepTech</span>. All rights reserved. Designed with ❤️
           </p>
         </div>
       </div>

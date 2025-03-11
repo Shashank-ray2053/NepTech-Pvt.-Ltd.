@@ -37,8 +37,21 @@ const Index = () => {
         const x = e.clientX - rect.left;
         const y = e.clientY - rect.top;
         
+        const centerX = rect.width / 2;
+        const centerY = rect.height / 2;
+        
+        const rotateX = (y - centerY) / 20;
+        const rotateY = (centerX - x) / 20;
+        
         (card as HTMLElement).style.setProperty('--mouse-x', `${x}px`);
         (card as HTMLElement).style.setProperty('--mouse-y', `${y}px`);
+        (card as HTMLElement).style.setProperty('--rotate-x', `${rotateX}deg`);
+        (card as HTMLElement).style.setProperty('--rotate-y', `${rotateY}deg`);
+      });
+      
+      card.addEventListener('mouseleave', () => {
+        (card as HTMLElement).style.setProperty('--rotate-x', '0deg');
+        (card as HTMLElement).style.setProperty('--rotate-y', '0deg');
       });
     });
 
@@ -49,6 +62,7 @@ const Index = () => {
       
       cards.forEach(card => {
         card.removeEventListener('mousemove', () => {});
+        card.removeEventListener('mouseleave', () => {});
       });
     };
   }, []);

@@ -1,3 +1,4 @@
+
 import type { Config } from "tailwindcss";
 
 export default {
@@ -68,7 +69,8 @@ export default {
 					green: '#32CD32',
 					lightBlue: '#E6F4FF',
 					gray: '#F5F5F7',
-					purple: '#9b87f5'
+					purple: '#9b87f5',
+					orange: '#FF6600'
 				}
 			},
 			borderRadius: {
@@ -109,6 +111,10 @@ export default {
 					'0%': { transform: 'rotate(0deg)' },
 					'100%': { transform: 'rotate(360deg)' }
 				},
+				'reverse-spin': {
+					'0%': { transform: 'rotate(0deg)' },
+					'100%': { transform: 'rotate(-360deg)' }
+				},
 				'blur-in': {
 					'0%': { filter: 'blur(5px)', opacity: '0' },
 					'100%': { filter: 'blur(0)', opacity: '1' }
@@ -116,6 +122,10 @@ export default {
 				'scale-in': {
 					'0%': { transform: 'scale(0.95)', opacity: '0' },
 					'100%': { transform: 'scale(1)', opacity: '1' }
+				},
+				'spin-slow': {
+					'0%': { transform: 'rotate(0deg)' },
+					'100%': { transform: 'rotate(360deg)' }
 				}
 			},
 			animation: {
@@ -127,11 +137,16 @@ export default {
 				'float': 'float 5s ease-in-out infinite',
 				'pulse-subtle': 'pulse-subtle 4s ease-in-out infinite',
 				'rotate-slow': 'rotate-slow 12s linear infinite',
+				'reverse-spin': 'reverse-spin 15s linear infinite',
 				'blur-in': 'blur-in 0.6s ease-out forwards',
-				'scale-in': 'scale-in 0.5s ease-out forwards'
+				'scale-in': 'scale-in 0.5s ease-out forwards',
+				'spin-slow': 'spin-slow 20s linear infinite'
 			},
 			transitionTimingFunction: {
 				'elastic': 'cubic-bezier(0.68, -0.55, 0.265, 1.55)'
+			},
+			perspective: {
+				'1000': '1000px',
 			}
 		}
 	},

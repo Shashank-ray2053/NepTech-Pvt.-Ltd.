@@ -37,7 +37,7 @@ const Navbar = () => {
       )}
     >
       <div className="container mx-auto px-6 flex justify-between items-center">
-        <a href="#home" className="flex items-center space-x-2">
+        <a href="#home" className="flex items-center space-x-3">
           <img 
             src="/lovable-uploads/c4dad46c-99f2-4756-9567-b7f9ca14063d.png" 
             alt="NepTech Logo" 
@@ -46,6 +46,13 @@ const Navbar = () => {
               isScrolled ? "h-10" : "h-12"
             )}
           />
+          <span className={cn(
+            "font-bold transition-all duration-300 ease-elastic",
+            isScrolled ? "text-xl" : "text-2xl",
+            "text-neptech-blue"
+          )}>
+            NepTech
+          </span>
         </a>
 
         {/* Desktop Navigation */}
