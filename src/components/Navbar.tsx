@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 import { cn } from '@/lib/utils';
@@ -7,7 +6,6 @@ const navLinks = [
   { name: 'Home', href: '#home' },
   { name: 'Services', href: '#services' },
   { name: 'About', href: '#about' },
-  { name: 'Team', href: '#team' },
   { name: 'Contact', href: '#contact' },
 ];
 
@@ -39,20 +37,13 @@ const Navbar = () => {
       <div className="container mx-auto px-6 flex justify-between items-center">
         <a href="#home" className="flex items-center space-x-3">
           <img 
-            src="/lovable-uploads/c4dad46c-99f2-4756-9567-b7f9ca14063d.png" 
-            alt="NepTech Logo" 
+            src="/lovable-uploads/a9e768ee-ab1c-44bf-bb12-00801e6db89f.png" 
+            alt="CodeByte Logo" 
             className={cn(
               "transition-all duration-300 ease-elastic",
               isScrolled ? "h-10" : "h-12"
             )}
           />
-          <span className={cn(
-            "font-bold transition-all duration-300 ease-elastic",
-            isScrolled ? "text-xl" : "text-2xl",
-            "text-neptech-blue"
-          )}>
-            NepTech
-          </span>
         </a>
 
         {/* Desktop Navigation */}
