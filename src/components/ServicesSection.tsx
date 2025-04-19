@@ -1,3 +1,4 @@
+
 import { useEffect, useRef, useState } from 'react';
 import { Headset, Cloud, Server, Database, BarChart, X } from 'lucide-react';
 import { cn } from '@/lib/utils';
@@ -45,7 +46,7 @@ const services = [
     title: 'Cloud Services',
     description: 'Securely store, access, and manage your data and applications in our optimized cloud environment.',
     icon: <Cloud className="service-icon" />,
-    detailedDescription: "NepTech Cloud Services offers enterprise-grade cloud solutions that are scalable, secure, and cost-effective. We help businesses migrate to the cloud, optimize their cloud infrastructure, and manage their cloud resources efficiently.",
+    detailedDescription: "Our Cloud Services offers enterprise-grade cloud solutions that are scalable, secure, and cost-effective. We help businesses migrate to the cloud, optimize their cloud infrastructure, and manage their cloud resources efficiently.",
     features: [
       'Public, private, and hybrid cloud options',
       'Seamless migration from legacy systems',
@@ -54,7 +55,7 @@ const services = [
       'Pay-as-you-go pricing model',
       'Comprehensive security protocols'
     ],
-    colorClass: 'from-purple-500 to-indigo-600'
+    colorClass: 'from-accent to-violet-600'
   },
   {
     title: 'IT Infrastructure',
@@ -69,7 +70,7 @@ const services = [
       'Infrastructure security hardening',
       'Regular maintenance and updates'
     ],
-    colorClass: 'from-green-500 to-teal-600'
+    colorClass: 'from-emerald-500 to-teal-600'
   },
   {
     title: 'Data Backup & Recovery',
@@ -84,13 +85,13 @@ const services = [
       'Regular backup verification',
       'Rapid recovery procedures'
     ],
-    colorClass: 'from-orange-500 to-amber-600'
+    colorClass: 'from-amber-500 to-orange-500'
   },
   {
     title: 'IT Consultancy',
     description: 'Strategic guidance to align your IT investments with your business objectives for maximum ROI.',
     icon: <BarChart className="service-icon" />,
-    detailedDescription: "NepTech's IT Consultancy services provide expert strategic guidance to help businesses make informed technology decisions. We analyze your current IT infrastructure, identify areas for improvement, and create roadmaps for technology implementation that aligns with your business goals.",
+    detailedDescription: "Our IT Consultancy services provide expert strategic guidance to help businesses make informed technology decisions. We analyze your current IT infrastructure, identify areas for improvement, and create roadmaps for technology implementation that aligns with your business goals.",
     features: [
       'Comprehensive IT assessments',
       'Strategic technology roadmapping',
@@ -99,14 +100,19 @@ const services = [
       'Cost optimization strategies',
       'Technology trend analysis'
     ],
-    colorClass: 'from-pink-500 to-rose-600'
+    colorClass: 'from-blue-500 to-indigo-600'
   },
 ];
 
 const ServiceDetail: React.FC<ServiceDetailProps> = ({ service, onClose }) => {
   const detailRef = useRef<HTMLDivElement>(null);
+  const contentRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    if (contentRef.current) {
+      contentRef.current.classList.add('animate-scale-in');
+    }
+    
     const handleClickOutside = (event: MouseEvent) => {
       if (detailRef.current && !detailRef.current.contains(event.target as Node)) {
         onClose();
@@ -114,8 +120,6 @@ const ServiceDetail: React.FC<ServiceDetailProps> = ({ service, onClose }) => {
     };
 
     document.addEventListener('mousedown', handleClickOutside);
-    
-    // Add no-scroll to body
     document.body.classList.add('overflow-hidden');
     
     return () => {
@@ -127,36 +131,37 @@ const ServiceDetail: React.FC<ServiceDetailProps> = ({ service, onClose }) => {
   if (!service) return null;
 
   return (
-    <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+    <div className="fixed inset-0 bg-black/30 backdrop-blur-sm z-50 flex items-center justify-center p-4 animate-fade-in">
       <div 
         ref={detailRef}
-        className="bg-white rounded-2xl shadow-2xl max-w-3xl w-full max-h-[90vh] overflow-y-auto animate-scale-in"
+        className="bg-white rounded-xl shadow-xl max-w-3xl w-full max-h-[90vh] overflow-y-auto opacity-0"
+        ref={contentRef}
       >
         <div className="relative p-6 md:p-8">
           <button 
             onClick={onClose} 
-            className="absolute right-4 top-4 w-8 h-8 rounded-full bg-neptech-gray/50 flex items-center justify-center text-neptech-dark hover:bg-neptech-gray transition-colors"
+            className="absolute right-4 top-4 w-8 h-8 rounded-full bg-accent/10 flex items-center justify-center text-accent hover:bg-accent/20 transition-colors"
           >
             <X size={18} />
           </button>
           
           <div className="flex items-center gap-4 mb-6">
-            <div className={`flex-shrink-0 w-16 h-16 rounded-full bg-gradient-to-br ${service.colorClass} flex items-center justify-center text-white`}>
+            <div className={`flex-shrink-0 w-16 h-16 rounded-xl bg-gradient-to-br ${service.colorClass} flex items-center justify-center text-white`}>
               {service.icon}
             </div>
-            <h3 className="text-2xl font-bold text-neptech-dark">{service.title}</h3>
+            <h3 className="text-2xl font-bold text-foreground">{service.title}</h3>
           </div>
           
-          <p className="text-neptech-dark/70 mb-6">{service.detailedDescription}</p>
+          <p className="text-foreground/80 mb-6">{service.detailedDescription}</p>
           
-          <h4 className="text-lg font-semibold text-neptech-dark mb-4">Key Features</h4>
+          <h4 className="text-lg font-semibold text-foreground mb-4">Key Features</h4>
           <ul className="space-y-3 mb-8">
             {service.features.map((feature, index) => (
               <li key={index} className="flex items-start gap-3">
                 <div className={`w-5 h-5 rounded-full bg-gradient-to-br ${service.colorClass} flex-shrink-0 flex items-center justify-center mt-0.5 text-white`}>
                   <div className="w-2 h-2 rounded-full bg-white"></div>
                 </div>
-                <span className="text-neptech-dark/80">{feature}</span>
+                <span className="text-foreground/80">{feature}</span>
               </li>
             ))}
           </ul>
@@ -235,7 +240,7 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
 
       const content = card.querySelector('.card-3d-content') as HTMLElement;
       if (content) {
-        content.style.transform = `translateZ(40px)`;
+        content.style.transform = `translateZ(20px)`;
       }
     };
 
@@ -262,7 +267,7 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
       className={cn(
         "service-card card-3d p-8 opacity-0 relative overflow-hidden",
         "hover:shadow-lg transition-all duration-500 ease-elastic",
-        "bg-white"
+        "card-gradient"
       )}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
@@ -277,15 +282,15 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
           {icon}
         </div>
         
-        <h3 className="text-xl font-semibold mb-4 text-neptech-dark">{title}</h3>
-        <p className="text-neptech-dark/70">{description}</p>
+        <h3 className="text-xl font-semibold mb-4 text-foreground">{title}</h3>
+        <p className="text-foreground/70 mb-6">{description}</p>
         
         <button 
           onClick={onLearnMore}
-          className={`inline-block mt-6 font-medium transition-colors duration-300 group flex items-center relative overflow-hidden`}
+          className={`inline-flex items-center font-medium transition-all duration-300 group`}
         >
           <span className={`relative z-10 bg-clip-text text-transparent bg-gradient-to-r ${colorClass}`}>Learn more</span>
-          <span className={`inline-block ml-1 transition-transform duration-300 group-hover:translate-x-1 bg-clip-text text-transparent bg-gradient-to-r ${colorClass}`}>→</span>
+          <span className={`ml-1 transition-transform duration-300 group-hover:translate-x-1 bg-clip-text text-transparent bg-gradient-to-r ${colorClass}`}>→</span>
           
           {/* Animated underline effect */}
           <span className={`absolute bottom-0 left-0 w-full h-0.5 bg-gradient-to-r ${colorClass} transform scale-x-0 origin-left transition-transform duration-300 group-hover:scale-x-100`}></span>
@@ -339,26 +344,24 @@ const ServicesSection = () => {
     <section 
       id="services" 
       ref={sectionRef}
-      className="section-padding bg-neptech-gray relative overflow-hidden"
+      className="section-padding bg-background relative overflow-hidden"
     >
-      {/* Background elements with more vibrant colors */}
+      {/* Background elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-0 left-0 w-1/3 h-1/3 bg-gradient-to-br from-blue-400/10 to-transparent blur-[80px]"></div>
-        <div className="absolute bottom-0 right-0 w-1/3 h-1/3 bg-gradient-to-tl from-green-400/10 to-transparent blur-[80px]"></div>
-        <div className="absolute top-1/2 right-1/4 w-1/4 h-1/4 bg-gradient-to-bl from-purple-400/10 to-transparent blur-[80px]"></div>
-        <div className="absolute bottom-1/3 left-1/3 w-1/4 h-1/4 bg-gradient-to-tr from-pink-400/10 to-transparent blur-[80px]"></div>
-        <div className="absolute top-1/4 left-1/2 w-1/5 h-1/5 bg-gradient-to-r from-orange-400/10 to-transparent blur-[70px]"></div>
+        <div className="absolute top-0 left-0 w-1/3 h-1/3 bg-gradient-to-br from-accent/5 to-transparent blur-[80px]"></div>
+        <div className="absolute bottom-0 right-0 w-1/3 h-1/3 bg-gradient-to-tl from-emerald-400/5 to-transparent blur-[80px]"></div>
+        <div className="absolute top-1/2 right-1/4 w-1/4 h-1/4 bg-gradient-to-bl from-purple-400/5 to-transparent blur-[80px]"></div>
       </div>
 
       <div className="container mx-auto px-6">
         <div ref={titleRef} className="text-center max-w-3xl mx-auto mb-16 opacity-0">
-          <span className="bg-gradient-to-r from-neptech-blue to-neptech-purple text-white px-4 py-1 rounded-full text-sm font-medium tracking-wide shadow-lg">
+          <span className="bg-gradient-to-r from-accent to-violet-500 text-white px-4 py-1 rounded-full text-sm font-medium tracking-wide shadow-lg">
             OUR SERVICES
           </span>
-          <h2 className="text-3xl md:text-4xl font-bold mt-4 mb-6 text-neptech-dark">
-            Comprehensive IT Solutions for Modern Businesses
+          <h2 className="section-title mt-4">
+            Comprehensive IT Solutions
           </h2>
-          <p className="text-neptech-dark/70">
+          <p className="text-foreground/70 mt-8">
             Our range of services is designed to address all your IT needs with cutting-edge technology and expert support.
           </p>
         </div>

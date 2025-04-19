@@ -28,14 +28,13 @@ const Index = () => {
       });
     });
 
-    // 3D Card Hover Effect for all cards with card-3d class
-    const cards = document.querySelectorAll('.card-3d');
-    
-    cards.forEach(card => {
-      card.addEventListener('mousemove', (e: MouseEvent) => {
+    // 3D Card Hover Effect
+    document.querySelectorAll('.card-3d').forEach(card => {
+      card.addEventListener('mousemove', (e: Event) => {
+        const evt = e as MouseEvent;
         const rect = (card as HTMLElement).getBoundingClientRect();
-        const x = e.clientX - rect.left;
-        const y = e.clientY - rect.top;
+        const x = evt.clientX - rect.left;
+        const y = evt.clientY - rect.top;
         
         const centerX = rect.width / 2;
         const centerY = rect.height / 2;
@@ -60,7 +59,7 @@ const Index = () => {
         anchor.removeEventListener('click', function() {});
       });
       
-      cards.forEach(card => {
+      document.querySelectorAll('.card-3d').forEach(card => {
         card.removeEventListener('mousemove', () => {});
         card.removeEventListener('mouseleave', () => {});
       });
@@ -68,7 +67,7 @@ const Index = () => {
   }, []);
 
   return (
-    <div className="min-h-screen bg-white overflow-hidden custom-scrollbar">
+    <div className="min-h-screen bg-background overflow-hidden custom-scrollbar">
       <Navbar />
       <HeroSection />
       <ServicesSection />
