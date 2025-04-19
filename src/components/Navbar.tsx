@@ -31,7 +31,7 @@ const Navbar = () => {
   return <header className={cn("fixed top-0 left-0 right-0 z-50 transition-all duration-300 ease-elastic", isScrolled ? "py-3 bg-white/80 backdrop-blur-md shadow-sm" : "py-6 bg-transparent")}>
       <div className="container mx-auto px-6 flex justify-between items-center rounded-none">
         <a href="#home" className="flex items-center space-x-3">
-          <img src="/lovable-uploads/a9e768ee-ab1c-44bf-bb12-00801e6db89f.png" alt="CodeByte Logo" className={cn("transition-all duration-300 ease-elastic", isScrolled ? "h-10" : "h-12")} />
+          <img src="/lovable-uploads/a9e768ee-ab1c-44bf-bb12-00801e6db89f.png" alt="CodeByte Logo" className="object-cover" />
         </a>
 
         {/* Desktop Navigation */}
